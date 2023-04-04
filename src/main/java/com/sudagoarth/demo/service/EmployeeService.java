@@ -1,9 +1,10 @@
-package com.sudagoarth.demo.dao;
-
+package com.sudagoarth.demo.service;
 import com.sudagoarth.demo.entity.Employee;
+
 import java.util.List;
 
-public interface EmployeeDAO {
+public interface EmployeeService  {
+
 
     List<Employee> findAll();
 
