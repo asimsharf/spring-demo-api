@@ -21,8 +21,6 @@ public class Employee {
     @Column(name = "email")
     String email;
 
-
-
     public Employee(){
 
     }

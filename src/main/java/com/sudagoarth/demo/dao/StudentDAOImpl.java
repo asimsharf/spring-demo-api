@@ -1,7 +1,5 @@
 package com.sudagoarth.demo.dao;
 
-
-
 import com.sudagoarth.demo.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
