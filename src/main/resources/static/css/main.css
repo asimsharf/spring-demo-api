@@ -1,0 +1,11 @@
+.funny{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 50px;
+    color: green;
+    font-family: "Times New Roman", Times, serif;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
