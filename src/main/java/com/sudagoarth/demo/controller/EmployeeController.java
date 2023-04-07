@@ -16,14 +16,6 @@ import java.util.List;
 @RequestMapping("/employees")
 public class EmployeeController {
 
-	/*
-	 * This method will be called for every web request coming into our controller.
-	 * It will trim the input strings and remove leading and trailing whitespace.
-	 * If the string only contains whitespace, it will be converted to null.
-	 * This will resolve our issue for our validation.
-	 * @InitBinder annotation is used to tell Spring MVC to call this method for every
-	 * web request coming into our controller.
-	 */
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
 		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
@@ -59,16 +51,6 @@ public class EmployeeController {
 		return "employees/employee-form";
 	}
 
-
-	/*
-	 * saveEmployee() method is called when the user clicks the submit button on the
-	 * form. It will save the employee to the database.
-	 * @Valid annotation is used to validate the employee object. BindingResult
-	 * object will hold the result of the validation.
-	 * If there are any errors, we will return the user to the form page.
-	 * If there are no errors, we will save the employee to the database and redirect
-	 * the user to the list-employees page.
-	 */
 	@RequestMapping("/save")
 	public String saveEmployee(@Valid @ModelAttribute("employee") Employee theEmployee, BindingResult theBindingResult) {
 		if (theBindingResult.hasErrors()) {

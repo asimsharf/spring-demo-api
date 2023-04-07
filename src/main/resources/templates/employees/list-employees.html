@@ -2,56 +2,80 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+	<script th:src="@{/js/tailwindcss.js}"></script>
 	<title>Employee Directory</title>
 </head>
 
 <body>
 
-<div class="container">
+<div class="flex flex-col">
+	<div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+		<div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+			<div class="overflow-hidden">
+				<h3>Employee Directory</h3>
 
-	<h3>Employee Directory</h3>
+				<br>
 
-	<div class="row">
-		<div class="col-md-6">
-			<a th:href="@{/employees/showFormForAdd}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+				<a th:href="@{/employees/showFormForAdd}" class="btn btn-primary">
+					Add Employee
+				</a>
+
+				<table class="min-w-full">
+					<thead class="bg-gray-200 border-b">
+						<tr>
+							<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+								ID
+							</th>
+							<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+								First Name
+							</th>
+							<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+								Last Name
+							</th>
+							<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+								Email
+							</th>
+							<th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+								Actions
+							</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="employee : ${employees}"  class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+							<td th:text="${employee.Id}" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+								Id
+							</td>
+							<td th:text="${employee.firstName}" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+								First Name
+							</td>
+							<td th:text="${employee.lastName}" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+								Last Name
+							</td>
+							<td th:text="${employee.email}" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+								Email
+							</td>
+							<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+								<a th:href="@{/employees/showFormForUpdate(employeeId=${employee.id})}" class="btn btn-primary">
+									Update
+								</a>
+								<a th:href="@{/employees/delete(employeeId=${employee.id})}" class="btn btn-danger" onclick="if (!confirm('Are you sure?')) { return false; }">
+									Delete
+								</a>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
-
-	<hr>
-	<table class="table table-bordered table-striped">
-		<thead class="table-dark">
-			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Email</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		
-		<tbody>
-
-			<tr th:each="employee : ${employees}">
-				<td th:text="${employee.firstName}">First Name</td>
-				<td th:text="${employee.lastName}">Last Name</td>
-				<td th:text="${employee.email}">Email</td>
-				<td>
-					<a th:href="@{/employees/showFormForUpdate(employeeId=${employee.id})}" class="btn btn-primary">Update</a>
-					<a th:href="@{/employees/delete(employeeId=${employee.id})}" class="btn btn-danger" onclick="if (!confirm('Are you sure?')) { return false; }">Delete</a>
-				</td>
-			</tr>
-
-		</tbody>		
-	</table>
-	
 </div>
-	
+
 </body>
 </html>
 
