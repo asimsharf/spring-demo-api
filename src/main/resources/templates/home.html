@@ -8,6 +8,14 @@
 
 </head>
 <body>
-    <p th:text="'Hello, ' + ${theDate} + '!'" class="funny"></p>
+    <div class="container">
+        <menu>
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/employees/list}">Employees</a></li>
+                <li><a th:href="@{/employees/showFormForAdd}">Add Employee</a></li>
+            </ul>
+        </menu>
+    </div>
 </body>
 </html>

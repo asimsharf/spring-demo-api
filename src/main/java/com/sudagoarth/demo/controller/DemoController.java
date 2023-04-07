@@ -6,13 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class DemoController {
-
-	// create a mapping for "/hello"
 	
 	@GetMapping("/home")
 	public String sayHello(Model theModel) {
 		
-		theModel.addAttribute("theDate", new java.util.Date());
+		theModel.addAttribute("name", "Asim Abdelgadir");
 		
 		return "home";
 	}
