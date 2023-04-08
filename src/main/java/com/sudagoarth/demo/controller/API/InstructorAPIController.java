@@ -29,7 +29,7 @@ public class InstructorAPIController {
 
     @GetMapping("/instructors")
     public ResponseEntity<Object> findAll() {
-        return TheResponse.getResponse("Request Instructors List", HttpStatus.OK, instructorService.findAll(), 1);
+        return  TheResponse.getResponse("Request All Instructors", HttpStatus.OK, instructorService.findAll(), 1);
     }
 
     @GetMapping("/instructors/{instructorId}")
@@ -45,7 +45,7 @@ public class InstructorAPIController {
     public ResponseEntity<Object> save(@RequestBody Instructor theInstructor) {
         theInstructor.setId(0);
         instructorService.save(theInstructor);
-        return TheResponse.getResponse("Instructor Added", HttpStatus.OK, theInstructor, 1);
+        return TheResponse.getResponse("Instructor Saved", HttpStatus.OK, theInstructor, 1);
     }
 
     @PutMapping("/instructors")
