@@ -1,6 +1,5 @@
 package com.sudagoarth.demo.entity;
 
-
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

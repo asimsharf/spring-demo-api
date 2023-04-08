@@ -4,16 +4,17 @@
     <title>Hello World</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 <body>
-    <div class="container">
+    <div class="font-bold text-gray-700 text-2xl">
         <menu>
             <ul>
-                <li><a th:href="@{/}">Home</a></li>
-                <li><a th:href="@{/employees/list}">Employees</a></li>
-                <li><a th:href="@{/employees/showFormForAdd}">Add Employee</a></li>
+                <li><a th:href="@{/}"><h1>Home</h1></a></li>
+                <li><a th:href="@{/employees/list}"><h1>Employees</h1></a></li>
+                <li><a th:href="@{/employees/showFormForAdd}"><h1>Add Employee</h1></a></li>
             </ul>
         </menu>
     </div>
