@@ -1,6 +1,7 @@
 package com.sudagoarth.demo.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,18 +18,18 @@ public class InstructorDetail {
 
         @Column(name = "hobby")
         private String hobby;
+        @JsonIgnore
+        @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+        @JoinColumn(name = "instructor_id")
+        private Instructor instructor;
 
-//        @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
-//        @JoinColumn(name = "instructor_id")
-//        private Instructor instructor;
-//
-//        public Instructor getInstructor() {
-//            return instructor;
-//        }
-//
-//        public void setInstructor(Instructor instructor) {
-//            this.instructor = instructor;
-//        }
+        public Instructor getInstructor() {
+            return instructor;
+        }
+
+        public void setInstructor(Instructor instructor) {
+            this.instructor = instructor;
+        }
 
         public InstructorDetail() {
         }

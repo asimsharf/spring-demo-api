@@ -57,9 +57,11 @@ public class InstructorAPIController {
     @DeleteMapping("/instructors/{instructorId}")
     public ResponseEntity<Object> deleteById(@PathVariable int instructorId) {
         Instructor tempInstructor = instructorService.findById(instructorId);
+
         if (tempInstructor == null) {
             throw new RuntimeException("Instructor id not found - " + instructorId);
         }
+
         instructorService.deleteById(instructorId);
         return TheResponse.getResponse("Instructor Deleted", HttpStatus.OK, tempInstructor, 1);
     }
