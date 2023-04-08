@@ -10,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api")
 public class EmployeeAPIController {
@@ -35,7 +33,7 @@ public class EmployeeAPIController {
 	}
 
 	@GetMapping("/employees/{employeeId}")
-	public ResponseEntity<Object> getEmployee(@PathVariable int employeeId) {
+	public ResponseEntity<Object> findById(@PathVariable int employeeId) {
 		Employee theEmployee = employeeService.findById(employeeId);
 		if (theEmployee == null) {
 			throw new RuntimeException("Employee id not found - " + employeeId);
@@ -44,20 +42,20 @@ public class EmployeeAPIController {
 	}
 
 	@PostMapping("/employees")
-	public ResponseEntity<Object> addEmployee(@RequestBody Employee theEmployee) {
+	public ResponseEntity<Object> save(@RequestBody Employee theEmployee) {
 		theEmployee.setId(0);
 		employeeService.save(theEmployee);
 		return TheResponse.getResponse("Employee Added", HttpStatus.OK, theEmployee, 1);
 	}
 
 	@PutMapping("/employees")
-	public ResponseEntity<Object> updateEmployee(@RequestBody Employee theEmployee) {
+	public ResponseEntity<Object> update(@RequestBody Employee theEmployee) {
 		employeeService.save(theEmployee);
 		return TheResponse.getResponse("Employee Updated", HttpStatus.OK, theEmployee, 1);
 	}
 
 	@DeleteMapping("/employees/{employeeId}")
-	public ResponseEntity<Object> deleteEmployee(@PathVariable int employeeId) {
+	public ResponseEntity<Object> deleteById(@PathVariable int employeeId) {
 		Employee tempEmployee = employeeService.findById(employeeId);
 		if (tempEmployee == null) {
 			throw new RuntimeException("Employee id not found - " + employeeId);
