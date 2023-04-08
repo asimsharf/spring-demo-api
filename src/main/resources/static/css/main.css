@@ -1,0 +1,62 @@
+tailwind css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.tailwindcss {
+    @apply bg-gray-100;
+}
+
+.tailwindcss h1 {
+    @apply text-4xl;
+}
+
+.tailwindcss p {
+    @apply text-xl;
+}
+
+.tailwindcss a {
+    @apply text-blue-500;
+}
+
+.tailwindcss a:hover {
+    @apply text-blue-700;
+}
+
+.tailwindcss a:active {
+    @apply text-blue-900;
+}
+
+.tailwindcss a:visited {
+    @apply text-blue-300;
+}
+
+.tailwindcss a:focus {
+    @apply text-blue-900;
+}
+
+.tailwindcss a:link {
+    @apply text-blue-500;
+}
+
+.tailwindcss a:link:hover {
+    @apply text-blue-700;
+}
+
+.tailwindcss a:link:active {
+    @apply text-blue-900;
+}
+
+.tailwindcss a:link:visited {
+    @apply text-blue-300;
+}
+
+.tailwindcss a:link:focus {
+    @apply text-blue-900;
+}
+
+.tailwindcss a:visited:hover {
+    @apply text-blue-700;
+}

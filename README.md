@@ -51,5 +51,3 @@ mvn test
 * [Docker](https://www.docker.com/) - Containerization
 * [MySQL](https://www.mysql.com/) - Database
 * [Redis](https://redis.io/) - Cache
-
-

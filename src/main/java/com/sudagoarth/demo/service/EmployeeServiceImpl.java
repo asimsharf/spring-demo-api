@@ -1,39 +1,57 @@
 package com.sudagoarth.demo.service;
 
-import com.sudagoarth.demo.dao.EmployeeDAO;
+import com.sudagoarth.demo.dao.EmployeeRepository;
 import com.sudagoarth.demo.entity.Employee;
-import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
-    private final EmployeeDAO employeeDAO;
+public class EmployeeServiceImpl implements EmployeeService {
 
-    public EmployeeServiceImpl(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
-    }
-    @Override
-    public List<Employee> findAll() {
-        return employeeDAO.findAll();
-    }
+	private final EmployeeRepository employeeRepository;
+	
+	@Autowired
+	public EmployeeServiceImpl(EmployeeRepository theEmployeeRepository) {
+		employeeRepository = theEmployeeRepository;
+	}
+	
+	@Override
+	public List<Employee> findAll() {
+		return employeeRepository.findAllByOrderByLastNameAsc();
+	}
 
-    @Override
-    public Employee findById(Integer id) {
-        return employeeDAO.findById(id);
-    }
+	@Override
+	public Employee findById(int theId) {
+		Optional<Employee> result = employeeRepository.findById(theId);
+		Employee theEmployee = null;
+		if (result.isPresent()) {
+			theEmployee = result.get();
+		}
+		else {
+			throw new RuntimeException("Did not find employee id - " + theId);
+		}
+		return theEmployee;
+	}
 
-    @Transactional
-    @Override
-    public Employee save(Employee theEmployee) {
-        return  employeeDAO.save(theEmployee);
-    }
+	@Override
+	public Employee save(Employee theEmployee) {
+		employeeRepository.save(theEmployee);
+		return theEmployee;
+	}
 
-    @Transactional
-    @Override
-    public void deleteById(Integer theID) {
-        employeeDAO.deleteById(theID);
-    }
+	@Override
+	public void deleteById(int theId) {
+		employeeRepository.deleteById(theId);
+	}
 
 }
+
+
+
+
+
+
