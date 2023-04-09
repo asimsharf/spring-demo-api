@@ -28,8 +28,8 @@
 <div class="row">
 	<div class="col s12">
 		<h3 class="text-lg">Employee Directory</h3>
-		<a th:href="@{/employees/showFormForAdd}" class="btn waves-effect waves-light">
-			Create Employee
+		<a th:href="@{/instructors/showFormForAdd}" class="btn waves-effect waves-light">
+			Create Instructor
 			<i class="material-icons right">add_circle_outline</i>
 		</a>
 		<table class="">
@@ -47,6 +47,15 @@
 				<th scope="col" class="">
 					Email
 				</th>
+
+				<th scope="col" class="">
+					Hobby
+				</th>
+
+				<th scope="col" class="">
+					Channel
+				</th>
+
 				<th class="right" scope="col" >
 					Actions
 				</th>
@@ -55,24 +64,33 @@
 
 			<tbody>
 
-			<tr th:each="employee : ${employees}"  class="hoverable">
-				<td th:text="${employee.Id}" class="pa-10">
+			<tr th:each="instructor : ${instructors}"  class="hoverable">
+				<td th:text="${instructor.Id}" class="pa-10">
 					Id
 				</td>
-				<td th:text="${employee.firstName}" class="">
+				<td th:text="${instructor.firstName}" class="">
 					First Name
 				</td>
-				<td th:text="${employee.lastName}" class="">
+				<td th:text="${instructor.lastName}" class="">
 					Last Name
 				</td>
-				<td th:text="${employee.email}" class="">
+				<td th:text="${instructor.email}" class="">
 					Email
 				</td>
+
+				<td th:text="${instructor.instructorDetail.hobby}" class="">
+					Hobby
+				</td>
+
+				<td th:text="${instructor.instructorDetail.youtubeChannel}" class="">
+					Channel
+				</td>
+
 				<td class="right">
-					<a th:href="@{/employees/showFormForUpdate(employeeId=${employee.id})}" class="btn btn-primary">
+					<a th:href="@{/instructors/showFormForUpdate(instructorId=${instructor.id})}" class="btn btn-primary">
 						Update
 					</a>
-					<a th:href="@{/employees/delete(employeeId=${employee.id})}" class="btn btn-danger red" onclick="if (!confirm('Are you sure?')) { return false; }">
+					<a th:href="@{/instructors/delete(instructorId=${instructor.id})}" class="btn btn-danger red" onclick="if (!confirm('Are you sure?')) { return false; }">
 						Delete
 					</a>
 				</td>
