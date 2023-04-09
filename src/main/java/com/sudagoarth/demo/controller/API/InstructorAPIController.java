@@ -36,20 +36,23 @@ public class InstructorAPIController {
     public ResponseEntity<Object> findById(@PathVariable int instructorId) {
         Instructor theInstructor = instructorService.findById(instructorId);
         if (theInstructor == null) {
-            throw new RuntimeException("Instructor id not found - " + instructorId);
+            return TheResponse.getResponse("Instructor with ID - " + instructorId + " Not Found", HttpStatus.NOT_FOUND, null, 0);
         }
         return TheResponse.getResponse("Request Instructor", HttpStatus.OK, theInstructor, 1);
     }
 
     @PostMapping("/instructors")
     public ResponseEntity<Object> save(@RequestBody Instructor theInstructor) {
-        theInstructor.setId(0);
         instructorService.save(theInstructor);
-        return TheResponse.getResponse("Instructor Saved", HttpStatus.OK, theInstructor, 1);
+        return TheResponse.getResponse("Request Instructor", HttpStatus.OK, theInstructor, 1);
     }
 
     @PutMapping("/instructors")
     public ResponseEntity<Object> update(@RequestBody Instructor theInstructor) {
+        Instructor tempInstructor = instructorService.findById(theInstructor.getId());
+        if(tempInstructor == null){
+            return TheResponse.getResponse("Instructor with ID - " + theInstructor.getId() + " Not Found", HttpStatus.NOT_FOUND, null, 0);
+        }
         instructorService.save(theInstructor);
         return TheResponse.getResponse("Instructor Updated", HttpStatus.OK, theInstructor, 1);
     }
@@ -57,12 +60,10 @@ public class InstructorAPIController {
     @DeleteMapping("/instructors/{instructorId}")
     public ResponseEntity<Object> deleteById(@PathVariable int instructorId) {
         Instructor tempInstructor = instructorService.findById(instructorId);
-
         if (tempInstructor == null) {
-            throw new RuntimeException("Instructor id not found - " + instructorId);
+            return TheResponse.getResponse("Instructor with ID - " + instructorId + " Not Found", HttpStatus.NOT_FOUND, null, 0);
         }
-
         instructorService.deleteById(instructorId);
-        return TheResponse.getResponse("Instructor Deleted", HttpStatus.OK, tempInstructor, 1);
+        return TheResponse.getResponse("Instructor with ID - " + instructorId + " Deleted successfully", HttpStatus.OK, null, 1);
     }
 }

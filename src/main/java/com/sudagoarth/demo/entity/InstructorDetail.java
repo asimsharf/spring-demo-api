@@ -3,6 +3,8 @@ package com.sudagoarth.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "instructor_detail")
@@ -13,13 +15,17 @@ public class InstructorDetail {
         @Column(name = "id")
         private int id;
 
+        @NotNull(message="Youtube Channel is required")
+        @Size(min=1, message="is required")
         @Column(name = "youtube_channel")
         private String youtubeChannel;
 
+        @NotNull(message="Hobby is required")
+        @Size(min=1, message="is required")
         @Column(name = "hobby")
         private String hobby;
         @JsonIgnore
-        @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+        @OneToOne(mappedBy="instructorDetail", cascade=CascadeType.ALL)
         @JoinColumn(name = "instructor_id")
         private Instructor instructor;
 

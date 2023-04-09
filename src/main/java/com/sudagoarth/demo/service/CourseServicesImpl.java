@@ -30,15 +30,12 @@ public class CourseServicesImpl implements CourseServices{
         if (result.isPresent()) {
             theCourse = result.get();
         }
-        else {
-            throw new RuntimeException("Did not find instructor id - " + theId);
-        }
         return theCourse;
     }
 
     @Override
-    public void save(Course theCourse) {
-        courseRepository.save(theCourse);
+    public Course save(Course theCourse) {
+        return courseRepository.save(theCourse);
     }
 
     @Override

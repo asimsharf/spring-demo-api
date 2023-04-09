@@ -30,15 +30,12 @@ public class InstructorServiceImpl implements InstructorService {
         if (result.isPresent()) {
             theInstructor = result.get();
         }
-        else {
-            throw new RuntimeException("Did not find instructor id - " + theId);
-        }
         return theInstructor;
     }
 
     @Override
-    public void save(Instructor theInstructor) {
-        instructorRepository.save(theInstructor);
+    public Instructor save(Instructor theInstructor) {
+        return instructorRepository.save(theInstructor);
     }
 
     @Override
