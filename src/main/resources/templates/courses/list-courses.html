@@ -27,9 +27,9 @@
 
 <div class="row">
 	<div class="col s12">
-		<h3 class="text-lg">Employee Directory</h3>
-		<a th:href="@{/employees/showFormForAdd}" class="btn waves-effect waves-light">
-			Create Employee
+		<h3 class="text-lg">Courses Directory</h3>
+		<a th:href="@{/courses/showFormForAdd}" class="btn waves-effect waves-light">
+			Create Course
 			<i class="material-icons right">add_circle_outline</i>
 		</a>
 		<table class="">
@@ -39,13 +39,13 @@
 					ID
 				</th>
 				<th scope="col" class="">
-					First Name
+					Course Title
 				</th>
 				<th scope="col" class="">
-					Last Name
+					Instructor Name
 				</th>
 				<th scope="col" class="">
-					Email
+					Instructor Channel
 				</th>
 				<th class="right" scope="col" >
 					Actions
@@ -55,24 +55,24 @@
 
 			<tbody>
 
-			<tr th:each="employee : ${employees}"  class="hoverable">
-				<td th:text="${employee.Id}" class="pa-10">
+			<tr th:each="course : ${courses}"  class="hoverable">
+				<td th:text="${course.Id}" class="pa-10">
 					Id
 				</td>
-				<td th:text="${employee.firstName}" class="">
+				<td th:text="${course.title}" class="">
+					Title
+				</td>
+				<td th:text="${course.getInstructor.firstName}" class="">
 					First Name
 				</td>
-				<td th:text="${employee.lastName}" class="">
-					Last Name
-				</td>
-				<td th:text="${employee.email}" class="">
-					Email
+				<td th:text="${course.getInstructor.instructorDetail.youtubeChannel}" class="">
+					Instructor Channel
 				</td>
 				<td class="right">
-					<a th:href="@{/employees/showFormForUpdate(employeeId=${employee.id})}" class="btn btn-primary">
+					<a th:href="@{/courses/showFormForUpdate(courseId=${course.id})}" class="btn btn-primary">
 						Update
 					</a>
-					<a th:href="@{/employees/delete(employeeId=${employee.id})}" class="btn btn-danger red" onclick="if (!confirm('Are you sure?')) { return false; }">
+					<a th:href="@{/courses/delete(courseId=${course.id})}" class="btn btn-danger red" onclick="if (!confirm('Are you sure?')) { return false; }">
 						Delete
 					</a>
 				</td>

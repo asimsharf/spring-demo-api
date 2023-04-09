@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Hello World</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}"  media="screen,projection"/>
 
-    <link th:href="@{/css/main.css}" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
+
 <body>
-    <div class="font-bold text-gray-700 text-2xl">
-        <menu>
-            <ul>
-                <li><a th:href="@{/}"><h1>Home</h1></a></li>
-                <li><a th:href="@{/employees/list}"><h1>Employees</h1></a></li>
-                <li><a th:href="@{/employees/showFormForAdd}"><h1>Add Employee</h1></a></li>
-            </ul>
-        </menu>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo right">SPRING</a>
+        <ul class="left">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/employees/list}">Employees</a></li>
+            <li><a th:href="@{/instructors/list}">Instructors</a></li>
+            <li><a th:href="@{/courses/list}">Courses</a></li>
+        </ul>
     </div>
+</nav>
+
+
+<script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
 </body>
 </html>
