@@ -1,6 +1,8 @@
 package com.sudagoarth.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "review")
@@ -11,6 +13,8 @@ public class Review {
     @Column(name = "id")
     private int id;
 
+    @NotNull(message="is required")
+    @Size(min=1, message="is required")
     @Column(name = "comment")
     private String comment;
 

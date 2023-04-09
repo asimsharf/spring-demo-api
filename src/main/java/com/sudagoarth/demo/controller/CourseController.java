@@ -47,7 +47,7 @@ public class CourseController {
     }
 
     @RequestMapping("/showFormForUpdate")
-    public String update(@RequestParam("employeeId") int theId, Model theModel) {
+    public String update(@RequestParam("courseId") int theId, Model theModel) {
         Course theCourse = courseService.findById(theId);
         theModel.addAttribute("course", theCourse);
         return "courses/course-form";
@@ -64,7 +64,7 @@ public class CourseController {
     }
 
     @RequestMapping("/delete")
-    public String delete(@RequestParam("employeeId") int theId) {
+    public String delete(@RequestParam("courseId") int theId) {
         courseService.deleteById(theId);
         return "redirect:/courses/list";
     }

@@ -41,12 +41,12 @@
 				<th scope="col" class="">
 					Course Title
 				</th>
-				<th scope="col" class="">
-					Instructor Name
-				</th>
-				<th scope="col" class="">
-					Instructor Channel
-				</th>
+<!--				<th scope="col" class="">-->
+<!--					Instructor Name-->
+<!--				</th>-->
+<!--				<th scope="col" class="">-->
+<!--					Instructor Channel-->
+<!--				</th>-->
 				<th class="right" scope="col" >
 					Actions
 				</th>
@@ -62,12 +62,12 @@
 				<td th:text="${course.title}" class="">
 					Title
 				</td>
-				<td th:text="${course.getInstructor.firstName}" class="">
-					First Name
-				</td>
-				<td th:text="${course.getInstructor.instructorDetail.youtubeChannel}" class="">
-					Instructor Channel
-				</td>
+<!--				<td th:text="${course.getInstructor.firstName}" class="">-->
+<!--					First Name-->
+<!--				</td>-->
+<!--				<td th:text="${course.getInstructor.instructorDetail.youtubeChannel}" class="">-->
+<!--					Instructor Channel-->
+<!--				</td>-->
 				<td class="right">
 					<a th:href="@{/courses/showFormForUpdate(courseId=${course.id})}" class="btn btn-primary">
 						Update

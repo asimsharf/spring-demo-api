@@ -10,7 +10,7 @@ public interface InstructorService {
 
     Instructor findById(int theId);
 
-    void save(Instructor theInstructor);
+    Instructor save(Instructor theInstructor);
 
     void deleteById(int theId);
 
