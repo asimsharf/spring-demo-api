@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/instructors")
 public class InstructorController {
 
-
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
         StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
@@ -53,6 +52,7 @@ public class InstructorController {
 
     @RequestMapping("/save")
     public String save(@Valid @ModelAttribute("instructor") Instructor theInstructor, BindingResult theBindingResult) {
+
         if (theBindingResult.hasErrors()) {
             return "instructors/instructor-form";
         } else {
@@ -60,6 +60,7 @@ public class InstructorController {
             return "redirect:/instructors/list";
         }
     }
+
 
     @RequestMapping("/delete")
     public String delete(@RequestParam("instructorId") int theId) {

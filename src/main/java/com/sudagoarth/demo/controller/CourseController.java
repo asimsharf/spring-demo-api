@@ -24,15 +24,15 @@ public class CourseController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
-    ICourseServices courseService;
+    ICourseServices icourseServices;
 
-    public CourseController(ICourseServices theCourseService) {
-        courseService = theCourseService;
+    public CourseController(ICourseServices theICourseService) {
+        icourseServices = theICourseService;
     }
 
     @GetMapping("/list")
     public String list(Model theModel) {
-        List<Course> theCourses = courseService.findAll();
+        List<Course> theCourses = icourseServices.findAll();
         theModel.addAttribute("courses", theCourses);
         return "courses/list-courses";
     }
@@ -48,7 +48,7 @@ public class CourseController {
 
     @RequestMapping("/showFormForUpdate")
     public String update(@RequestParam("courseId") int theId, Model theModel) {
-        Course theCourse = courseService.findById(theId);
+        Course theCourse = icourseServices.findById(theId);
         theModel.addAttribute("course", theCourse);
         return "courses/course-form";
     }
@@ -58,14 +58,14 @@ public class CourseController {
         if (theBindingResult.hasErrors()) {
             return "courses/course-form";
         } else {
-            courseService.save(theCourse);
+            icourseServices.save(theCourse);
             return "redirect:/courses/list";
         }
     }
 
     @RequestMapping("/delete")
     public String delete(@RequestParam("courseId") int theId) {
-        courseService.deleteById(theId);
+        icourseServices.deleteById(theId);
         return "redirect:/courses/list";
     }
 

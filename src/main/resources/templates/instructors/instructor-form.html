@@ -1,78 +1,66 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}"  media="screen,projection"/>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Create Instructor Form</title>
-</head>
+<div th:replace="~{fragments/head :: head}"></div>
 
 <body>
 
-<nav>
-    <div class="nav-wrapper">
-        <a href="#" class="brand-logo right">SPRING</a>
-        <ul class="left">
-            <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/employees/list}">Employees</a></li>
-            <li><a th:href="@{/instructors/list}">Instructors</a></li>
-            <li><a th:href="@{/courses/list}">Courses</a></li>
-        </ul>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<main>
+    <div class="container">
+        <div class="row">
+
+            <div class="col s12">
+                <h3 class="text-lg px-2 py-2">Create Instructor</h3>
+            </div>
+
+            <form class="col s12" action="#" th:action="@{/instructors/save}" th:object="${instructor}" method="post">
+
+                <input  type="hidden" th:field="*{id}">
+                <div class="input-field col s12">
+                    <input th:field="*{firstName}" id="firstName" type="text" class="validate">
+                    <label for="firstName">First Name</label>
+                    <span class="error pb-4 red-text" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name is required</span>
+                </div>
+
+                <div class="input-field col s12">
+                    <input th:field="*{lastName}" id="lastName" type="text" class="validate">
+                    <label for="lastName">Last Name</label>
+                    <span class="error pb-4 red-text" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name is required</span>
+                </div>
+
+                <div class="input-field col s12">
+                    <input th:field="*{email}"  id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                    <span class="error pb-4 red-text" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email is required</span>
+                </div>
+
+                <div class="input-field col s12">
+                    <input th:field="*{instructorDetail.youtubeChannel}" id="youtubeChannel" type="text" class="validate">
+                    <label for="youtubeChannel">Youtube Channel</label>
+                    <span class="error pb-4 red-text" th:if="${#fields.hasErrors('instructorDetail.youtubeChannel')}" th:errors="*{instructorDetail.youtubeChannel}">Youtube Channel is required</span>
+                </div>
+
+                <div class="input-field col s12">
+                    <input th:field="*{instructorDetail.hobby}" id="hobby" type="text" class="validate">
+                    <label for="hobby">Hobby</label>
+                    <span class="error pb-4 red-text" th:if="${#fields.hasErrors('instructorDetail.hobby')}" th:errors="*{instructorDetail.hobby}">Hobby is required</span>
+                </div>
+
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                    Save Employee
+                    <i class="material-icons right">save</i>
+                </button>
+
+            </form>
+
+        </div>
     </div>
-</nav>
+</main>
 
 
-<div class="row">
+<div th:replace="~{fragments/footer :: footer}"></div>
 
-  <div class="col s12">
-      <h3 class="text-lg px-2 py-2">Create Instructor</h3>
-  </div>
-
-    <form class="col s12" action="#" th:action="@{/instructors/save}" th:object="${instructor}" method="post">
-
-        <input  type="hidden" th:field="*{id}">
-        <div class="input-field col s12">
-            <input th:field="*{firstName}" id="firstName" type="text" class="validate">
-            <label for="firstName">First Name</label>
-            <span class="error pb-4 red-text" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name is required</span>
-        </div>
-
-        <div class="input-field col s12">
-            <input th:field="*{lastName}" id="lastName" type="text" class="validate">
-            <label for="lastName">Last Name</label>
-            <span class="error pb-4 red-text" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name is required</span>
-        </div>
-
-        <div class="input-field col s12">
-            <input th:field="*{email}"  id="email" type="email" class="validate">
-            <label for="email">Email</label>
-            <span class="error pb-4 red-text" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email is required</span>
-        </div>
-
-        <div class="input-field col s12">
-            <input th:field="*{instructorDetail.youtubeChannel}" id="youtubeChannel" type="text" class="validate">
-            <label for="youtubeChannel">Youtube Channel</label>
-            <span class="error pb-4 red-text" th:if="${#fields.hasErrors('instructorDetail.youtubeChannel')}" th:errors="*{instructorDetail.youtubeChannel}">Youtube Channel is required</span>
-        </div>
-
-        <div class="input-field col s12">
-            <input th:field="*{instructorDetail.hobby}" id="hobby" type="text" class="validate">
-            <label for="hobby">Hobby</label>
-            <span class="error pb-4 red-text" th:if="${#fields.hasErrors('instructorDetail.hobby')}" th:errors="*{instructorDetail.hobby}">Hobby is required</span>
-        </div>
-
-        <button class="btn waves-effect waves-light" type="submit" name="action">
-            Save Employee
-            <i class="material-icons right">save</i>
-        </button>
-
-    </form>
-</div>
-
-<script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
 </body>
 </html>

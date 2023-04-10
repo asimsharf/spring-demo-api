@@ -12,10 +12,10 @@
         <div class="row">
 
             <div class="col s12">
-                <h3 class="text-lg px-2 py-2">Create Employee</h3>
+                <h3 class="text-lg px-2 py-2">Create Student</h3>
             </div>
 
-            <form class="col s12" action="#" th:action="@{/employees/save}" th:object="${employee}" method="post">
+            <form class="col s12" action="#" th:action="@{/students/save}" th:object="${student}" method="post">
 
                 <input  type="hidden" th:field="*{id}">
                 <div class="input-field col s12">
@@ -50,3 +50,5 @@
 
 </body>
 </html>
+
+

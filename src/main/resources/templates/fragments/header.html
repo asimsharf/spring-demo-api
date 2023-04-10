@@ -1,0 +1,22 @@
+<div th:fragments="header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <header>
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo right">SPRING</a>
+                    <a href="#" class="padding brand-logo left">Dashboard</a>
+                </div>
+            </nav>
+
+        </div>
+
+        <ul id="nav-mobile" class="sidenav sidenav-fixed">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/employees/list}">Employees</a></li>
+            <li><a th:href="@{/instructors/list}">Instructors</a></li>
+            <li><a th:href="@{/courses/list}">Courses</a></li>
+            <li><a th:href="@{/students/list}">Students</a></li>
+        </ul>
+
+    </header>
+</div>
