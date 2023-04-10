@@ -2,7 +2,7 @@ package com.sudagoarth.demo.controller;
 
 
 import com.sudagoarth.demo.entity.Course;
-import com.sudagoarth.demo.service.CourseServices;
+import com.sudagoarth.demo.service.ICourseServices;
 import jakarta.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -24,9 +24,9 @@ public class CourseController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
-    CourseServices courseService;
+    ICourseServices courseService;
 
-    public CourseController(CourseServices theCourseService) {
+    public CourseController(ICourseServices theCourseService) {
         courseService = theCourseService;
     }
 
@@ -38,7 +38,7 @@ public class CourseController {
     }
 
     @RequestMapping("/showFormForAdd")
-    public String show(Model theModel) {
+    public String create(Model theModel) {
         Course theCourse = new Course();
         theModel.addAttribute("course", theCourse);
 

@@ -1,6 +1,6 @@
 package com.sudagoarth.demo.service;
 
-import com.sudagoarth.demo.dao.EmployeeRepository;
+import com.sudagoarth.demo.dao.IEmployeeRepository;
 import com.sudagoarth.demo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,13 +10,13 @@ import java.util.Optional;
 
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+public class EmployeeServiceImpl implements IEmployeeService {
 
-	private final EmployeeRepository employeeRepository;
+	private final IEmployeeRepository employeeRepository;
 	
 	@Autowired
-	public EmployeeServiceImpl(EmployeeRepository theEmployeeRepository) {
-		employeeRepository = theEmployeeRepository;
+	public EmployeeServiceImpl(IEmployeeRepository theIEmployeeRepository) {
+		employeeRepository = theIEmployeeRepository;
 	}
 	
 	@Override

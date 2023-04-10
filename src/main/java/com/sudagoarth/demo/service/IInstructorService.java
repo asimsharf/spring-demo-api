@@ -4,7 +4,7 @@ import com.sudagoarth.demo.entity.Instructor;
 
 import java.util.List;
 
-public interface InstructorService {
+public interface IInstructorService {
 
     List<Instructor> findAll();
 

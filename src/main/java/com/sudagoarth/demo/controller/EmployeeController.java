@@ -1,7 +1,7 @@
 package com.sudagoarth.demo.controller;
 
 import com.sudagoarth.demo.entity.Employee;
-import com.sudagoarth.demo.service.EmployeeService;
+import com.sudagoarth.demo.service.IEmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -22,21 +22,21 @@ public class EmployeeController {
 		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
 	}
 
-	EmployeeService employeeService;
+	IEmployeeService IEmployeeService;
 
-	public EmployeeController(EmployeeService theEmployeeService) {
-		employeeService = theEmployeeService;
+	public EmployeeController(IEmployeeService theIEmployeeService) {
+		IEmployeeService = theIEmployeeService;
 	}
 
 	@GetMapping("/list")
-	public String listEmployees(Model theModel) {
-		List<Employee> theEmployees = employeeService.findAll();
+	public String list(Model theModel) {
+		List<Employee> theEmployees = IEmployeeService.findAll();
 		theModel.addAttribute("employees", theEmployees);
 		return "employees/list-employees";
 	}
 
 	@RequestMapping("/showFormForAdd")
-	public String showFormForAdd(Model theModel) {
+	public String create(Model theModel) {
 		Employee theEmployee = new Employee();
 		theModel.addAttribute("employee", theEmployee);
 
@@ -45,25 +45,25 @@ public class EmployeeController {
 	}
 
 	@RequestMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("employeeId") int theId, Model theModel) {
-		Employee theEmployee = employeeService.findById(theId);
+	public String update(@RequestParam("employeeId") int theId, Model theModel) {
+		Employee theEmployee = IEmployeeService.findById(theId);
 		theModel.addAttribute("employee", theEmployee);
 		return "employees/employee-form";
 	}
 
 	@RequestMapping("/save")
-	public String saveEmployee(@Valid @ModelAttribute("employee") Employee theEmployee, BindingResult theBindingResult) {
+	public String save(@Valid @ModelAttribute("employee") Employee theEmployee, BindingResult theBindingResult) {
 		if (theBindingResult.hasErrors()) {
 			return "employees/employee-form";
 		} else {
-			employeeService.save(theEmployee);
+			IEmployeeService.save(theEmployee);
 			return "redirect:/employees/list";
 		}
 	}
 
 	@RequestMapping("/delete")
 	public String delete(@RequestParam("employeeId") int theId) {
-		employeeService.deleteById(theId);
+		IEmployeeService.deleteById(theId);
 		return "redirect:/employees/list";
 	}
 

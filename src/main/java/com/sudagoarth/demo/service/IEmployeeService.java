@@ -4,7 +4,7 @@ import com.sudagoarth.demo.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeService {
+public interface IEmployeeService {
 	List<Employee> findAll();
 	Employee findById(int theId);
 	Employee save(Employee theEmployee);

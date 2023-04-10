@@ -1,6 +1,6 @@
 package com.sudagoarth.demo.service;
 
-import com.sudagoarth.demo.dao.CourseRepository;
+import com.sudagoarth.demo.dao.ICourseRepository;
 import com.sudagoarth.demo.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,23 +9,23 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CourseServicesImpl implements CourseServices{
+public class CourseServicesImpl implements ICourseServices {
 
-    private final CourseRepository courseRepository;
+    private final ICourseRepository icourseRepository;
 
     @Autowired
-    public CourseServicesImpl(CourseRepository theCourseRepository){
-        courseRepository = theCourseRepository;
+    public CourseServicesImpl(ICourseRepository theICourseRepository){
+        icourseRepository = theICourseRepository;
     }
 
     @Override
     public List<Course> findAll() {
-        return courseRepository.findAll();
+        return icourseRepository.findAll();
     }
 
     @Override
     public Course findById(int theId) {
-        Optional<Course> result = courseRepository.findById(theId);
+        Optional<Course> result = icourseRepository.findById(theId);
         Course theCourse = null;
         if (result.isPresent()) {
             theCourse = result.get();
@@ -35,11 +35,11 @@ public class CourseServicesImpl implements CourseServices{
 
     @Override
     public Course save(Course theCourse) {
-        return courseRepository.save(theCourse);
+        return icourseRepository.save(theCourse);
     }
 
     @Override
     public void deleteById(int theId) {
-        courseRepository.deleteById(theId);
+        icourseRepository.deleteById(theId);
     }
 }

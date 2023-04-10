@@ -6,10 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TheResponse {
-    private String message;
-    private HttpStatus status;
-    private Object data;
-    private Integer code;
     public static ResponseEntity<Object> getResponse(String message, HttpStatus status, Object data, Integer code) {
         Map<String, Object> response = new HashMap<>();
         response.put("code", code);

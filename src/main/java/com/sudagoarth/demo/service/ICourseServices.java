@@ -4,7 +4,7 @@ import com.sudagoarth.demo.entity.Course;
 
 import java.util.List;
 
-public interface CourseServices {
+public interface ICourseServices {
     List<Course> findAll();
     Course findById(int theId);
     Course save(Course theCourse);

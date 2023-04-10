@@ -15,6 +15,11 @@ mvn test
 mvn spring-boot:run
 
 ```
+
+```agsl
+javac -cp lombok.jar Main.java
+javap Main.java
+```
 ![Screenshot](screenshots/1.png)
 ![Screenshot](screenshots/2.png)
 ![Screenshot](screenshots/3.png)

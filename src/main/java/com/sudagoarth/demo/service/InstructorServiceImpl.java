@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class InstructorServiceImpl implements InstructorService {
+public class InstructorServiceImpl implements IInstructorService {
 
     private final InstructorRepository instructorRepository;
     @Autowired

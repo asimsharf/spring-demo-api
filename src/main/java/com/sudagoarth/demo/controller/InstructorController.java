@@ -1,7 +1,7 @@
 package com.sudagoarth.demo.controller;
 
 import com.sudagoarth.demo.entity.Instructor;
-import com.sudagoarth.demo.service.InstructorService;
+import com.sudagoarth.demo.service.IInstructorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -23,48 +23,47 @@ public class InstructorController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
-    InstructorService instructorService;
+    IInstructorService IInstructorService;
 
-    public InstructorController(InstructorService theEmployeeService) {
-        instructorService = theEmployeeService;
+    public InstructorController(IInstructorService theEmployeeService) {
+        IInstructorService = theEmployeeService;
     }
 
     @GetMapping("/list")
-    public String listEmployees(Model theModel) {
-        List<Instructor> theInstructors = instructorService.findAll();
+    public String list(Model theModel) {
+        List<Instructor> theInstructors = IInstructorService.findAll();
         theModel.addAttribute("instructors", theInstructors);
         return "instructors/list-instructors";
     }
 
     @RequestMapping("/showFormForAdd")
-    public String showFormForAdd(Model theModel) {
+    public String create(Model theModel) {
         Instructor theInstructor = new Instructor();
         theModel.addAttribute("instructor", theInstructor);
-
         return "instructors/instructor-form";
 
     }
 
     @RequestMapping("/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("instructorId") int theId, Model theModel) {
-        Instructor theInstructor = instructorService.findById(theId);
+    public String update(@RequestParam("instructorId") int theId, Model theModel) {
+        Instructor theInstructor = IInstructorService.findById(theId);
         theModel.addAttribute("instructor", theInstructor);
         return "instructors/instructor-form";
     }
 
     @RequestMapping("/save")
-    public String saveEmployee(@Valid @ModelAttribute("instructor") Instructor theInstructor, BindingResult theBindingResult) {
+    public String save(@Valid @ModelAttribute("instructor") Instructor theInstructor, BindingResult theBindingResult) {
         if (theBindingResult.hasErrors()) {
             return "instructors/instructor-form";
         } else {
-            instructorService.save(theInstructor);
+            IInstructorService.save(theInstructor);
             return "redirect:/instructors/list";
         }
     }
 
     @RequestMapping("/delete")
     public String delete(@RequestParam("instructorId") int theId) {
-        instructorService.deleteById(theId);
+        IInstructorService.deleteById(theId);
         return "redirect:/instructors/list";
     }
 

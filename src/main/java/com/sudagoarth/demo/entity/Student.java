@@ -21,8 +21,20 @@ public class Student {
     @Column(name = "email")
     String email;
 
-    @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinTable(name = "students_courses", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
+    @ManyToMany(cascade= {
+            CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.REFRESH
+    })
+    @JoinTable(name = "students_courses",
+            joinColumns = @JoinColumn(
+                    name = "student_id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "course_id"
+            )
+    )
     private List<Course> courses;
 
     public Student(){
