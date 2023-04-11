@@ -2,7 +2,6 @@ package com.sudagoarth.demo.service;
 
 import com.sudagoarth.demo.dao.IStudentRepository;
 import com.sudagoarth.demo.entity.Student;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class StudentServiceImpl implements IStudentService {
 
 	private final IStudentRepository studentRepository;
 	
-	@Autowired
 	public StudentServiceImpl(IStudentRepository theIStudentRepository) {
 		studentRepository = theIStudentRepository;
 	}

@@ -2,7 +2,6 @@ package com.sudagoarth.demo.service;
 
 import com.sudagoarth.demo.dao.ICourseRepository;
 import com.sudagoarth.demo.entity.Course;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class CourseServicesImpl implements ICourseServices {
 
     private final ICourseRepository icourseRepository;
 
-    @Autowired
     public CourseServicesImpl(ICourseRepository theICourseRepository){
         icourseRepository = theICourseRepository;
     }
@@ -42,4 +40,5 @@ public class CourseServicesImpl implements ICourseServices {
     public void deleteById(int theId) {
         icourseRepository.deleteById(theId);
     }
+
 }

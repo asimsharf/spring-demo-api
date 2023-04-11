@@ -2,7 +2,6 @@ package com.sudagoarth.demo.service;
 
 import com.sudagoarth.demo.dao.InstructorRepository;
 import com.sudagoarth.demo.entity.Instructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.Optional;
 public class InstructorServiceImpl implements IInstructorService {
 
     private final InstructorRepository instructorRepository;
-    @Autowired
     public InstructorServiceImpl(InstructorRepository theInstructorRepository) {
         instructorRepository = theInstructorRepository;
     }

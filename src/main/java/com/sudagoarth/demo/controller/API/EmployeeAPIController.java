@@ -3,7 +3,6 @@ package com.sudagoarth.demo.controller.API;
 import com.sudagoarth.demo.entity.Employee;
 import com.sudagoarth.demo.response.TheResponse;
 import com.sudagoarth.demo.service.IEmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,6 @@ public class EmployeeAPIController {
 
 	private final IEmployeeService IEmployeeService;
 
-	@Autowired
 	public EmployeeAPIController(IEmployeeService theIEmployeeService) {
 		IEmployeeService = theIEmployeeService;
 	}

@@ -4,7 +4,6 @@ import com.sudagoarth.demo.entity.Course;
 import com.sudagoarth.demo.entity.Instructor;
 import com.sudagoarth.demo.response.TheResponse;
 import com.sudagoarth.demo.service.IInstructorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +22,6 @@ public class InstructorAPIController {
 
     private final IInstructorService IInstructorService;
 
-    @Autowired
     public InstructorAPIController(IInstructorService theIInstructorService) {
         IInstructorService = theIInstructorService;
     }
